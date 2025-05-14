@@ -1,7 +1,13 @@
 package com.wiley.beginningspring.ch11.Model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class User {
+    @XmlElement
     private int id;
+    @XmlElement
     private String name;
 
     public User() {

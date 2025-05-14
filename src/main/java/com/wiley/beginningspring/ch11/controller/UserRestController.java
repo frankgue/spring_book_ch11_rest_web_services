@@ -4,6 +4,7 @@ import com.wiley.beginningspring.ch11.Model.User;
 import com.wiley.beginningspring.ch11.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class UserRestController {
     public List<User> list(){
         return userRepository.findAll();
     }
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET,  produces = MediaType.APPLICATION_XML_VALUE)
     public User get(@PathVariable("id") int id){
         return userRepository.find(id);
     }
