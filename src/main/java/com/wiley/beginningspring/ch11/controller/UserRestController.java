@@ -1,11 +1,13 @@
 package com.wiley.beginningspring.ch11.controller;
 
 import com.wiley.beginningspring.ch11.Model.User;
+import com.wiley.beginningspring.ch11.exception.RestException;
 import com.wiley.beginningspring.ch11.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClientException;
 
 import java.util.List;
 
@@ -25,7 +27,11 @@ public class UserRestController {
     }
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public User get(@PathVariable("id") int id){
-        return userRepository.find(id);
+        User user = userRepository.find(id);
+        if (user == null){
+            throw new RestException(1, "User not found!", "User with id: " + id + " not found in the system");
+        }
+        return user;
     }
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") int id, @RequestBody User user){
