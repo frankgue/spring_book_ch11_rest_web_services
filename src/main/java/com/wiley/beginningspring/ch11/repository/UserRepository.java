@@ -15,8 +15,8 @@ public class UserRepository {
 
     @PostConstruct
     public void setup(){
-        users.put(1, new User(1, "Mert Caliskan"));
-        users.put(2, new User(2, "Kenan Sevindik"));
+        users.put(1, new User(1, "Mert Caliskan", "123 Main Street"));
+        users.put(2, new User(2, "Kenan Sevindik", "123 Main Street"));
     }
     public void save(User user){
         users.put(user.getId(), user);

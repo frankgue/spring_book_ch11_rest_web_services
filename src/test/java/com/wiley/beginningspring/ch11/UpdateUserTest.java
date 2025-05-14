@@ -8,7 +8,7 @@ public class UpdateUserTest {
     @Test
     public void updateUserWorksOK(){
         RestTemplate template = new RestTemplate();
-        User user = new User(3, "Jean GUEKENG");
+        User user = new User(3, "Jean GUEKENG", "123 Main Street");
         template.put("http://localhost:8080/basic_rest_service_war/rest/users/3", user);
     }
 }
